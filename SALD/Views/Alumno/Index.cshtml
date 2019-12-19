@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<SALD.Models.Alumno>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Alumnos";
 }
 
-<h2>Index</h2>
+<h2>Lista de Alumnos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nivel.ID)
+            @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -35,7 +35,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nivel.ID)
+            @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
@@ -53,11 +53,16 @@
             @Html.DisplayFor(modelItem => item.AdultoID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    <form>
+        <input type="button" value="Imprimir datos" onClick="window.print()">
+    </form>
+</div>

@@ -10,6 +10,7 @@ namespace SALD.Models
     public class Planificacion
     {
         [Required]
+        [Display(Name ="ID de Nivel")]
         public string ID { get; set; }
 
         [Required]
@@ -24,25 +25,28 @@ namespace SALD.Models
         public string Encargado { get; set; }
 
         [Required]
+        [Display(Name ="Objetivos\npropuestos")]
         public string Objetivos_prop { get; set; }
 
-
+        [Display(Name = "Objetivos\ncumplidos")]
         public string Objetivos_cump { get; set; }
 
         [Required]
+        [Display(Name = "Actividades\npropuestas")]
         public string Actividades_prop { get; set; }
 
-
+        [Display(Name = "Actividades\ncumplidas")]
         public string Actividades_cump { get; set; }
 
 
         public string NivelID { get; set; }
 
-
+        [Display(Name = "Sala")]
         public string SalaID { get; set; }
-
+        [Display(Name = "Número de\nreunión")]
         public int NumeroR { get; set; }
         public string Novedades { get; set; }
+        [Display(Name = "Lista de \napoderados")]
         public string ListaAp { get; set; }
 
         [RegularExpression(@"^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$", ErrorMessage = "Formato: 99.999.999-K")]

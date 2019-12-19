@@ -8,14 +8,19 @@ namespace SALD.Models
 {
     public class Nivel
     {
+        [Display(Name = "Nombre\nde nivel")]
+        public EnumNombre Nombre { get; set; }
+        [Display(Name = "Nivel ID")]
         public string ID { get; set; }
+        [Display(Name = "Rango de\nedad")]
         public int RangoEdad { get; set; }
+        [Display(Name = "Cantidad\nde alumnos")]
         public int CantAlumnos { get; set; }
         [Range(2000,2050, ErrorMessage ="Ingrese un año válido")]
         [Required]
         public int Año { get; set; }
         public EnumPeriodo Periodo { get; set; }
-        public EnumNombre Nombre { get; set; }
+        
         public virtual ICollection<Sala> Salas { get; set; }
         public virtual ICollection<Alumno> Alumnos { get; set; }
     }

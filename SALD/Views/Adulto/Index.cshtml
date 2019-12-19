@@ -1,24 +1,28 @@
 ﻿@model IEnumerable<SALD.Models.Adulto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Apoderados / Adultos a cargo";
 }
 
-<h2>Index</h2>
+<h2>Lista de Apoderados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear nuevo", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Alumno.Nombre)
+            @Html.DisplayNameFor(model => model.Alumno.ID)
+            <p>de alumno</p>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Telefono)
@@ -32,7 +36,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Alumno.Nombre)
+            @Html.DisplayFor(modelItem => item.Alumno.ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)
@@ -41,17 +45,25 @@
             @Html.DisplayFor(modelItem => item.Apellido)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Telefono)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    <form>
+        <input type="button" value="Imprimir datos" onClick="window.print()">
+    </form>
+</div>
