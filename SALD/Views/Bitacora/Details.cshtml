@@ -1,0 +1,42 @@
+﻿@model SALD.Models.Bitacora
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bitacora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Planificacion.Encargado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Planificacion.Encargado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sala.NivelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sala.NivelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Novedades)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Novedades)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

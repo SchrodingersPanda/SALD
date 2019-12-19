@@ -11,107 +11,112 @@ using SALD.Models;
 
 namespace SALD.Controllers
 {
-    public class UsuarioController : Controller
+    public class SalaController : Controller
     {
         private SALDContext db = new SALDContext();
 
-        // GET: Usuario
+        // GET: Sala
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            var salas = db.Salas.Include(s => s.Nivel);
+            return View(salas.ToList());
         }
 
-        // GET: Usuario/Details/5
+        // GET: Sala/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Sala sala = db.Salas.Find(id);
+            if (sala == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(sala);
         }
 
-        // GET: Usuario/Create
+        // GET: Sala/Create
         public ActionResult Create()
         {
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID");
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Sala/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "ID,Horario,NivelID,Ast,Educ")] Sala sala)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Salas.Add(sala);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", sala.NivelID);
+            return View(sala);
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Sala/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Sala sala = db.Salas.Find(id);
+            if (sala == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", sala.NivelID);
+            return View(sala);
         }
 
-        // POST: Usuario/Edit/5
+        // POST: Sala/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "ID,Horario,NivelID,Ast,Educ")] Sala sala)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(sala).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", sala.NivelID);
+            return View(sala);
         }
 
-        // GET: Usuario/Delete/5
+        // GET: Sala/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Sala sala = db.Salas.Find(id);
+            if (sala == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(sala);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Sala/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Sala sala = db.Salas.Find(id);
+            db.Salas.Remove(sala);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,48 @@
+﻿@model SALD.Models.Bitacora
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Bitacora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Planificacion.Encargado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Planificacion.Encargado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sala.NivelID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sala.NivelID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Novedades)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Novedades)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

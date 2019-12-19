@@ -1,0 +1,122 @@
+﻿@model SALD.Models.Planificacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Planificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nivel.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nivel.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Termino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Termino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Encargado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Encargado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Objetivos_prop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Objetivos_prop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Objetivos_cump)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Objetivos_cump)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividades_prop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividades_prop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividades_cump)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividades_cump)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Novedades)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Novedades)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ListaAp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListaAp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

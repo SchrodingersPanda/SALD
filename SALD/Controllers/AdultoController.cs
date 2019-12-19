@@ -11,107 +11,112 @@ using SALD.Models;
 
 namespace SALD.Controllers
 {
-    public class UsuarioController : Controller
+    public class AdultoController : Controller
     {
         private SALDContext db = new SALDContext();
 
-        // GET: Usuario
+        // GET: Adulto
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            var adultos = db.Adultos.Include(a => a.Alumno);
+            return View(adultos.ToList());
         }
 
-        // GET: Usuario/Details/5
+        // GET: Adulto/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Adulto adulto = db.Adultos.Find(id);
+            if (adulto == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(adulto);
         }
 
-        // GET: Usuario/Create
+        // GET: Adulto/Create
         public ActionResult Create()
         {
+            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "Nombre");
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Adulto/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Telefono,Email,AlumnoID")] Adulto adulto)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Adultos.Add(adulto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "Nombre", adulto.AlumnoID);
+            return View(adulto);
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Adulto/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Adulto adulto = db.Adultos.Find(id);
+            if (adulto == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "Nombre", adulto.AlumnoID);
+            return View(adulto);
         }
 
-        // POST: Usuario/Edit/5
+        // POST: Adulto/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "ID,Nombre,Apellido,Telefono,Email,AlumnoID")] Adulto adulto)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(adulto).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "Nombre", adulto.AlumnoID);
+            return View(adulto);
         }
 
-        // GET: Usuario/Delete/5
+        // GET: Adulto/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Adulto adulto = db.Adultos.Find(id);
+            if (adulto == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(adulto);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Adulto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Adulto adulto = db.Adultos.Find(id);
+            db.Adultos.Remove(adulto);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

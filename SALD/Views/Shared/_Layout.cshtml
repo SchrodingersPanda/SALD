@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - SALD</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -17,13 +17,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("SALD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Etiqueta", "Acción", "Controlador")</li>*@
+                    <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                    <li>@Html.ActionLink("Alumnos", "Index", "Alumno")</li>
+                    <li>@Html.ActionLink("Apoderados", "Index", "Adulto")</li>
+                    <li>@Html.ActionLink("Niveles", "Index", "Nivel")</li>
+                    <li>@Html.ActionLink("Salas", "Index", "Sala")</li>
+                    <li>@Html.ActionLink("Planificacion", "Index", "Planifiacion")</li>
+                    <li>@Html.ActionLink("Bitácora", "Index", "Bitacora")</li>
                 </ul>
             </div>
         </div>

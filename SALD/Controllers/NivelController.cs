@@ -11,107 +11,107 @@ using SALD.Models;
 
 namespace SALD.Controllers
 {
-    public class UsuarioController : Controller
+    public class NivelController : Controller
     {
         private SALDContext db = new SALDContext();
 
-        // GET: Usuario
+        // GET: Nivel
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            return View(db.Niveles.ToList());
         }
 
-        // GET: Usuario/Details/5
+        // GET: Nivel/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Nivel nivel = db.Niveles.Find(id);
+            if (nivel == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(nivel);
         }
 
-        // GET: Usuario/Create
+        // GET: Nivel/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Nivel/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "ID,RangoEdad,CantAlumnos,Año,Periodo,Nombre")] Nivel nivel)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Niveles.Add(nivel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            return View(nivel);
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Nivel/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Nivel nivel = db.Niveles.Find(id);
+            if (nivel == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(nivel);
         }
 
-        // POST: Usuario/Edit/5
+        // POST: Nivel/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "ID,RangoEdad,CantAlumnos,Año,Periodo,Nombre")] Nivel nivel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(nivel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            return View(nivel);
         }
 
-        // GET: Usuario/Delete/5
+        // GET: Nivel/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Nivel nivel = db.Niveles.Find(id);
+            if (nivel == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(nivel);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Nivel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Nivel nivel = db.Niveles.Find(id);
+            db.Niveles.Remove(nivel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

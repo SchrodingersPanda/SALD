@@ -11,107 +11,112 @@ using SALD.Models;
 
 namespace SALD.Controllers
 {
-    public class UsuarioController : Controller
+    public class AlumnoController : Controller
     {
         private SALDContext db = new SALDContext();
 
-        // GET: Usuario
+        // GET: Alumno
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            var alumnos = db.Alumnos.Include(a => a.Nivel);
+            return View(alumnos.ToList());
         }
 
-        // GET: Usuario/Details/5
+        // GET: Alumno/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Alumno alumno = db.Alumnos.Find(id);
+            if (alumno == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(alumno);
         }
 
-        // GET: Usuario/Create
+        // GET: Alumno/Create
         public ActionResult Create()
         {
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID");
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Alumno/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,FechaNAc,HojaVida,AdultoID,NivelID")] Alumno alumno)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Alumnos.Add(alumno);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", alumno.NivelID);
+            return View(alumno);
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Alumno/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Alumno alumno = db.Alumnos.Find(id);
+            if (alumno == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", alumno.NivelID);
+            return View(alumno);
         }
 
-        // POST: Usuario/Edit/5
+        // POST: Alumno/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "ID,Nombre,Apellido,FechaNAc,HojaVida,AdultoID,NivelID")] Alumno alumno)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(alumno).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", alumno.NivelID);
+            return View(alumno);
         }
 
-        // GET: Usuario/Delete/5
+        // GET: Alumno/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Alumno alumno = db.Alumnos.Find(id);
+            if (alumno == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(alumno);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Alumno/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Alumno alumno = db.Alumnos.Find(id);
+            db.Alumnos.Remove(alumno);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -11,107 +11,116 @@ using SALD.Models;
 
 namespace SALD.Controllers
 {
-    public class UsuarioController : Controller
+    public class PlanificacionController : Controller
     {
         private SALDContext db = new SALDContext();
 
-        // GET: Usuario
+        // GET: Planificacion
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            var planificaciones = db.Planificaciones.Include(p => p.Nivel).Include(p => p.Usuario);
+            return View(planificaciones.ToList());
         }
 
-        // GET: Usuario/Details/5
+        // GET: Planificacion/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Planificacion planificacion = db.Planificaciones.Find(id);
+            if (planificacion == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(planificacion);
         }
 
-        // GET: Usuario/Create
+        // GET: Planificacion/Create
         public ActionResult Create()
         {
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID");
+            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre");
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Planificacion/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Create([Bind(Include = "ID,Inicio,Termino,Encargado,Objetivos_prop,Objetivos_cump,Actividades_prop,Actividades_cump,NivelID,SalaID,NumeroR,Novedades,ListaAp,UsuarioID")] Planificacion planificacion)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Planificaciones.Add(planificacion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
+            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre", planificacion.UsuarioID);
+            return View(planificacion);
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Planificacion/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Planificacion planificacion = db.Planificaciones.Find(id);
+            if (planificacion == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
+            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre", planificacion.UsuarioID);
+            return View(planificacion);
         }
 
-        // POST: Usuario/Edit/5
+        // POST: Planificacion/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
+        public ActionResult Edit([Bind(Include = "ID,Inicio,Termino,Encargado,Objetivos_prop,Objetivos_cump,Actividades_prop,Actividades_cump,NivelID,SalaID,NumeroR,Novedades,ListaAp,UsuarioID")] Planificacion planificacion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(usuario).State = EntityState.Modified;
+                db.Entry(planificacion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usuario);
+            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
+            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre", planificacion.UsuarioID);
+            return View(planificacion);
         }
 
-        // GET: Usuario/Delete/5
+        // GET: Planificacion/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            Planificacion planificacion = db.Planificaciones.Find(id);
+            if (planificacion == null)
             {
                 return HttpNotFound();
             }
-            return View(usuario);
+            return View(planificacion);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Planificacion/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Planificacion planificacion = db.Planificaciones.Find(id);
+            db.Planificaciones.Remove(planificacion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

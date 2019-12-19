@@ -1,0 +1,105 @@
+﻿@model IEnumerable<SALD.Models.Planificacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nivel.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Termino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Encargado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Objetivos_prop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Objetivos_cump)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actividades_prop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actividades_cump)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Novedades)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListaAp)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nivel.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Termino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Encargado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Objetivos_prop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Objetivos_cump)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actividades_prop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actividades_cump)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Novedades)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListaAp)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
