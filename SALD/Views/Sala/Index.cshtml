@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SALD.Models.Sala>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista";
 }
 
-<h2>Index</h2>
+<h2>Lista de Salas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <input type="button" class="btn btn-info" value="Crear nuevo" onclick="location.href='@Url.Action("Create", "Sala")'" />
 </p>
 <table class="table">
     <tr>
@@ -41,11 +41,16 @@
             @Html.DisplayFor(modelItem => item.Educ)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    <form>
+        <input type="button" class="btn btn-success" value="Imprimir" onClick="window.print()">
+    </form>
+</div>

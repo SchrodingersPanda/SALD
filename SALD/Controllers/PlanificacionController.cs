@@ -18,7 +18,8 @@ namespace SALD.Controllers
         // GET: Planificacion
         public ActionResult Index()
         {
-            var planificaciones = db.Planificaciones.Include(p => p.Nivel).Include(p => p.Usuario);
+            //var planificaciones = db.Planificaciones.Include(p => p.Nivel).Include(p => p.Usuario);
+            var planificaciones = db.Planificaciones.Include(p => p.Nivel);
             return View(planificaciones.ToList());
         }
 
@@ -41,7 +42,7 @@ namespace SALD.Controllers
         public ActionResult Create()
         {
             ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID");
-            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre");
+            //ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "ID");
             return View();
         }
 
@@ -50,7 +51,7 @@ namespace SALD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Inicio,Termino,Encargado,Objetivos_prop,Objetivos_cump,Actividades_prop,Actividades_cump,NivelID,SalaID,NumeroR,Novedades,ListaAp,UsuarioID")] Planificacion planificacion)
+        public ActionResult Create([Bind(Include = "ID,Inicio,Termino,Encargado,Objetivos_prop,Objetivos_cump,Actividades_prop,Actividades_cump,NivelID,SalaID,NumeroR,Novedades,ListaAp")] Planificacion planificacion)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +61,7 @@ namespace SALD.Controllers
             }
 
             ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
-            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre", planificacion.UsuarioID);
+            //ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "ID", planificacion.UsuarioID);
             return View(planificacion);
         }
 
@@ -77,7 +78,7 @@ namespace SALD.Controllers
                 return HttpNotFound();
             }
             ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
-            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre", planificacion.UsuarioID);
+            //ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "ID", planificacion.UsuarioID);
             return View(planificacion);
         }
 
@@ -86,7 +87,7 @@ namespace SALD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Inicio,Termino,Encargado,Objetivos_prop,Objetivos_cump,Actividades_prop,Actividades_cump,NivelID,SalaID,NumeroR,Novedades,ListaAp,UsuarioID")] Planificacion planificacion)
+        public ActionResult Edit([Bind(Include = "ID,Inicio,Termino,Encargado,Objetivos_prop,Objetivos_cump,Actividades_prop,Actividades_cump,NivelID,SalaID,NumeroR,Novedades,ListaAp")] Planificacion planificacion)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +96,7 @@ namespace SALD.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
-            ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "Nombre", planificacion.UsuarioID);
+            //ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "ID", planificacion.UsuarioID);
             return View(planificacion);
         }
 

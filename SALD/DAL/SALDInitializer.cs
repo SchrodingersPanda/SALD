@@ -50,27 +50,27 @@ namespace SALD.DAL
 
             var adultos = new List<Adulto>
             {
-            new Adulto{ID="44444444-4",Nombre="Javier", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="77.777.777-7"},
-            new Adulto{ID="55555555-5",Nombre="Rosario", Apellido="Valdivia", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="88.888.888-8"},
-            new Adulto{ID="66666666-6",Nombre="Alfonso", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="99.999.999-9"},
+            new Adulto{ID="44444444-4",Nombre="Javier", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="77777777-7"},
+            new Adulto{ID="55555555-5",Nombre="Rosario", Apellido="Valdivia", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="88888888-8"},
+            new Adulto{ID="66666666-6",Nombre="Alfonso", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="99999999-9"},
             };
             adultos.ForEach(s => context.Adultos.Add(s));
             context.SaveChanges();
 
             var planificaciones = new List<Planificacion>
             {
-            new Planificacion{ID="Plan-001", Inicio=DateTime.Parse("2019-01-01"),Termino=DateTime.Parse("2019-03-01"), Encargado="Natalia Garrido", Objetivos_prop="PPP", Objetivos_cump="CCC",Actividades_prop="AAA", Actividades_cump="AAA",NivelID="SCMY-2019-1", SalaID="S-01", NumeroR=1,Novedades="Sin novedad",ListaAp="a,b,c",UsuarioID="11.111.111-1"},
-            new Planificacion{ID="Plan-002", Inicio=DateTime.Parse("2019-01-01"),Termino=DateTime.Parse("2019-03-01"), Encargado="Carolina Moya", Objetivos_prop="PPP", Objetivos_cump="CCC",Actividades_prop="AAA", Actividades_cump="AAA",NivelID="MMY-2019-2", SalaID="S-02", NumeroR=1,Novedades="Sin novedad",ListaAp="a,b,c",UsuarioID="22.222.222-3"},
-            new Planificacion{ID="Plan-003", Inicio=DateTime.Parse("2019-01-01"),Termino=DateTime.Parse("2019-03-01"), Encargado="Marcela Martinez", Objetivos_prop="PPP", Objetivos_cump="CCC",Actividades_prop="AAA", Actividades_cump="AAA",NivelID="KDR-2019-3", SalaID="S-03", NumeroR=1,Novedades="Sin novedad",ListaAp="a,b,c",UsuarioID="33.333.333-3"},
+            new Planificacion{ID="Plan-001", Inicio=DateTime.Parse("2019-01-01"),Termino=DateTime.Parse("2019-03-01"), Encargado="Natalia Garrido", Objetivos_prop="PPP", Objetivos_cump="CCC",Actividades_prop="AAA", Actividades_cump="AAA",NivelID="SCMY-2019-1", SalaID="S-01", NumeroR=1,Novedades="Sin novedad",ListaAp="a,b,c"/*,UsuarioID="11.111.111-1"*/},
+            new Planificacion{ID="Plan-002", Inicio=DateTime.Parse("2019-01-01"),Termino=DateTime.Parse("2019-03-01"), Encargado="Carolina Moya", Objetivos_prop="PPP", Objetivos_cump="CCC",Actividades_prop="AAA", Actividades_cump="AAA",NivelID="MMY-2019-2", SalaID="S-02", NumeroR=1,Novedades="Sin novedad",ListaAp="a,b,c"/*,UsuarioID="22.222.222-3"*/},
+            new Planificacion{ID="Plan-003", Inicio=DateTime.Parse("2019-01-01"),Termino=DateTime.Parse("2019-03-01"), Encargado="Marcela Martinez", Objetivos_prop="PPP", Objetivos_cump="CCC",Actividades_prop="AAA", Actividades_cump="AAA",NivelID="KDR-2019-3", SalaID="S-03", NumeroR=1,Novedades="Sin novedad",ListaAp="a,b,c"/*,UsuarioID="33.333.333-3"*/},
             };
             planificaciones.ForEach(s => context.Planificaciones.Add(s));
             context.SaveChanges();
 
             var bitacoras = new List<Bitacora>
             {
-            new Bitacora{ID="B-001",Novedades="Sin novedades",SalaID="S-01",PlanificacionID="Plan-001", },
-            new Bitacora{ID="B-002",Novedades="Sin novedades",SalaID="S-02",PlanificacionID="Plan-002", },
-            new Bitacora{ID="B-002",Novedades="Sin novedades",SalaID="S-03",PlanificacionID="Plan-003",},
+            new Bitacora{ID="B-001",Novedades="Sin novedades",/*SalaID="S-01",*/PlanificacionID="Plan-001", },
+            new Bitacora{ID="B-002",Novedades="Sin novedades",/*SalaID="S-02",*/PlanificacionID="Plan-002", },
+            new Bitacora{ID="B-003",Novedades="Sin novedades",/*SalaID="S-03",*/PlanificacionID="Plan-003",},
             };
             bitacoras.ForEach(s => context.Bitacoras.Add(s));
             context.SaveChanges();

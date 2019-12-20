@@ -10,7 +10,7 @@ namespace SALD.Models
     public class Planificacion
     {
         [Required]
-        [Display(Name ="ID de Nivel")]
+        [Display(Name ="ID de Planificación")]
         public string ID { get; set; }
 
         [Required]
@@ -50,12 +50,12 @@ namespace SALD.Models
         [Display(Name = "Lista de \napoderados")]
         public string ListaAp { get; set; }
 
-        [RegularExpression(@"^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$", ErrorMessage = "Formato: 99.999.999-K")]
-        [StringLength(12, MinimumLength = 11)]
-        [Required]
-        public string UsuarioID { get; set; }
+        //[RegularExpression(@"^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$", ErrorMessage = "Formato: 99.999.999-K")]
+        //[StringLength(12, MinimumLength = 11)]
+        //[Required]
+        //public string UsuarioID { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
+        //public virtual Usuario Usuario { get; set; }
         public virtual Nivel Nivel { get; set; }
         public virtual ICollection<Sala> Salas { get; set; }
         public virtual ICollection<Bitacora> Bitacoras { get; set; }

@@ -18,7 +18,7 @@ namespace SALD.Controllers
         // GET: Bitacora
         public ActionResult Index()
         {
-            var bitacoras = db.Bitacoras.Include(b => b.Planificacion).Include(b => b.Sala);
+            var bitacoras = db.Bitacoras.Include(b => b.Planificacion)/*.Include(b => b.Sala)*/;
             return View(bitacoras.ToList());
         }
 
@@ -41,7 +41,7 @@ namespace SALD.Controllers
         public ActionResult Create()
         {
             ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado");
-            ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID");
+            //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace SALD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Novedades,SalaID,PlanificacionID")] Bitacora bitacora)
+        public ActionResult Create([Bind(Include = "ID,Novedades,PlanificacionID")] Bitacora bitacora)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace SALD.Controllers
             }
 
             ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado", bitacora.PlanificacionID);
-            ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
+            //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
             return View(bitacora);
         }
 
@@ -77,7 +77,7 @@ namespace SALD.Controllers
                 return HttpNotFound();
             }
             ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado", bitacora.PlanificacionID);
-            ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
+            //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
             return View(bitacora);
         }
 
@@ -86,7 +86,7 @@ namespace SALD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Novedades,SalaID,PlanificacionID")] Bitacora bitacora)
+        public ActionResult Edit([Bind(Include = "ID,Novedades,PlanificacionID")] Bitacora bitacora)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace SALD.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado", bitacora.PlanificacionID);
-            ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
+            //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
             return View(bitacora);
         }
 

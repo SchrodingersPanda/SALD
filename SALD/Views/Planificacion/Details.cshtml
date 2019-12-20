@@ -1,10 +1,10 @@
 ﻿@model SALD.Models.Planificacion
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle";
 }
 
-<h2>Details</h2>
+<h2>Detalle</h2>
 
 <div>
     <h4>Planificacion</h4>
@@ -18,13 +18,13 @@
             @Html.DisplayFor(model => model.Nivel.ID)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Usuario.Nombre)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Usuario.Nombre)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Inicio)
@@ -117,6 +117,11 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Lista", "Index")
 </p>
+<div>
+    <form>
+        <input type="button" class="btn btn-success" value="Imprimir" onClick="window.print()">
+    </form>
+</div>

@@ -40,7 +40,7 @@ namespace SALD.Controllers
         // GET: Adulto/Create
         public ActionResult Create()
         {
-            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "Nombre");
+            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "ID");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace SALD.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "Nombre", adulto.AlumnoID);
+            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "ID", adulto.AlumnoID);
             return View(adulto);
         }
 
@@ -74,7 +74,7 @@ namespace SALD.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "Nombre", adulto.AlumnoID);
+            ViewBag.AlumnoID = new SelectList(db.Alumnos, "ID", "ID", adulto.AlumnoID);
             return View(adulto);
         }
 

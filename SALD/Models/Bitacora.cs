@@ -14,14 +14,15 @@ namespace SALD.Models
         public string ID { get; set; }
         [Required]
         public string Novedades { get; set; }
-        [Required]
-        [Display(Name = "Sala")]
-        public string SalaID { get; set; }
+        //[Required]
+        //[Display(Name = "Sala")]
+        //public string SalaID { get; set; }
         [Required]
         [Display(Name = "Planificación")]
         public string PlanificacionID { get; set; }
-        [Required]        
+        //[Required]        
         public virtual Sala Sala { get; set; }
+      
         public virtual Planificacion Planificacion { get; set; }
         
 

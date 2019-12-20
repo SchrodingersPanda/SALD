@@ -1,22 +1,26 @@
 ﻿@model IEnumerable<SALD.Models.Planificacion>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista";
 }
 
-<h2>Index</h2>
+<h2>Lista de Planificaciones</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <input type="button" class="btn btn-info" value="Crear nuevo" onclick="location.href='@Url.Action("Create", "Planificacion")'" />
+    @*@Html.ActionLink("Crear nuevo", "Create")*@
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nivel.ID)
+            @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+            @Html.DisplayNameFor(model => model.Nivel.ID)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Inicio)
         </th>
@@ -56,11 +60,14 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nivel.ID)
+            @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+            @Html.DisplayFor(modelItem => item.Nivel.ID)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Inicio)
         </td>
@@ -95,11 +102,16 @@
             @Html.DisplayFor(modelItem => item.ListaAp)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
         </td>
     </tr>
 }
 
 </table>
+<div>
+    <form>
+        <input type="button" class="btn btn-success" value="Imprimir" onClick="window.print()">
+    </form>
+</div>
