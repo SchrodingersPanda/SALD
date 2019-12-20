@@ -1,21 +1,18 @@
 ﻿@model IEnumerable<SALD.Models.Sala>
 
 @{
-    ViewBag.Title = "Lista de Salas";
+    ViewBag.Title = "Index";
 }
 
-<h2>Lista de Salas</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nueva", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nivel.Nombre)
+            @Html.DisplayNameFor(model => model.Nivel.ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Horario)
@@ -32,10 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nivel.Nombre)
+            @Html.DisplayFor(modelItem => item.Nivel.ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Horario)
@@ -47,16 +41,11 @@
             @Html.DisplayFor(modelItem => item.Educ)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
 
 </table>
-<div>
-    <form>
-        <input type="button" value="Imprimir datos" onClick="window.print()">
-    </form>
-</div>

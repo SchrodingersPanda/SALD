@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<SALD.Models.Usuario>
 
 @{
-    ViewBag.Title = "Lista de Usuarios";
+    ViewBag.Title = "Index";
 }
 
-<h2>Lista de Usuarios</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -47,16 +47,11 @@
             @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
 
 </table>
-<div>
-    <form>
-        <input type="button" value="Imprimir datos" onClick="window.print()">
-    </form>
-</div>

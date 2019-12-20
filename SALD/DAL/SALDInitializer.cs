@@ -13,9 +13,9 @@ namespace SALD.DAL
         {
             var usuarios = new List<Usuario>
             {
-            new Usuario{Nombre="Alejandro",Apellido="Soto",ID="11.111.111-1", Username="asotoz", Usrtype=1, Password="asoto2019"},
-            new Usuario{Nombre="Miguel",Apellido="Romero",ID="22.222.222-2", Username="mromero", Usrtype=2, Password="mromero2019"},
-            new Usuario{Nombre="Benjamin",Apellido="Mora",ID="33.333.333-3", Username="bmora", Usrtype=3, Password="bmora2019"}
+            new Usuario{Nombre="Alejandro",Apellido="Soto",ID="11111111-1", Username="asotoz", Usrtype=EnumType.Sysadmin, Password="asoto2019"},
+            new Usuario{Nombre="Miguel",Apellido="Romero",ID="22222222-2", Username="mromero", Usrtype=EnumType.Dirección, Password="mromero2019"},
+            new Usuario{Nombre="Benjamin",Apellido="Mora",ID="33333333-3", Username="bmora", Usrtype=EnumType.Fonoaudiología, Password="bmora2019"}
             };
 
             usuarios.ForEach(s => context.Usuarios.Add(s));
@@ -41,18 +41,18 @@ namespace SALD.DAL
 
             var alumnos = new List<Alumno>
             {
-            new Alumno{ID="77.777.777-7",Nombre="Ines", Apellido="Suarez", FechaNAc=DateTime.Parse("2018-09-01"),NivelID="SCMY-2019-1",HojaVida="Sin novdedad", AdultoID="44.444.444-4"},
-            new Alumno{ID="88.888.888-8",Nombre="Pedro", Apellido="Valdivia", FechaNAc=DateTime.Parse("2016-09-01"),NivelID="MMY-2019-2",HojaVida="Sin novdedad", AdultoID="55.555.555-5"},
-            new Alumno{ID="99.999.999-9",Nombre="Diego", Apellido="Almagro", FechaNAc=DateTime.Parse("2014-09-01"),NivelID="KDR-2019-3",HojaVida="Sin novdedad", AdultoID="66.666.666-6"},
+            new Alumno{ID="77777777-7",Nombre="Ines", Apellido="Suarez", FechaNAc=DateTime.Parse("2018-09-01"),NivelID="SCMY-2019-1",HojaVida="Sin novdedad", AdultoID="44.444.444-4"},
+            new Alumno{ID="88888888-8",Nombre="Pedro", Apellido="Valdivia", FechaNAc=DateTime.Parse("2016-09-01"),NivelID="MMY-2019-2",HojaVida="Sin novdedad", AdultoID="55.555.555-5"},
+            new Alumno{ID="99999999-9",Nombre="Diego", Apellido="Almagro", FechaNAc=DateTime.Parse("2014-09-01"),NivelID="KDR-2019-3",HojaVida="Sin novdedad", AdultoID="66.666.666-6"},
             };
             alumnos.ForEach(s => context.Alumnos.Add(s));
             context.SaveChanges();
 
             var adultos = new List<Adulto>
             {
-            new Adulto{ID="44.444.444-4",Nombre="Javier", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="77.777.777-7"},
-            new Adulto{ID="55.555.555-5",Nombre="Rosario", Apellido="Valdivia", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="88.888.888-8"},
-            new Adulto{ID="66.666.666-6",Nombre="Alfonso", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="99.999.999-9"},
+            new Adulto{ID="44444444-4",Nombre="Javier", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="77.777.777-7"},
+            new Adulto{ID="55555555-5",Nombre="Rosario", Apellido="Valdivia", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="88.888.888-8"},
+            new Adulto{ID="66666666-6",Nombre="Alfonso", Apellido="Suarez", Telefono="56912345678",Email="correo@mail.cl",AlumnoID="99.999.999-9"},
             };
             adultos.ForEach(s => context.Adultos.Add(s));
             context.SaveChanges();

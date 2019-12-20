@@ -14,9 +14,10 @@ namespace SALD.Models
         public string ID { get; set; }
 
         [Required]
+       
         public DateTime Inicio { get; set; }
 
-        [Required]
+        [Required]        
         public DateTime Termino { get; set; }
 
         [RegularExpression("^[A-Za-zÑñáéíóúÁÉÍÓÚ -]*$", ErrorMessage = "Ingrese sólo texto")]
@@ -24,14 +25,14 @@ namespace SALD.Models
         [Required]
         public string Encargado { get; set; }
 
-        [Required]
+        
         [Display(Name ="Objetivos\npropuestos")]
         public string Objetivos_prop { get; set; }
 
         [Display(Name = "Objetivos\ncumplidos")]
         public string Objetivos_cump { get; set; }
 
-        [Required]
+        
         [Display(Name = "Actividades\npropuestas")]
         public string Actividades_prop { get; set; }
 

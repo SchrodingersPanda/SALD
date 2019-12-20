@@ -47,7 +47,7 @@ namespace SALD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RangoEdad,CantAlumnos,Año,Periodo,Nombre")] Nivel nivel)
+        public ActionResult Create([Bind(Include = "ID,Nombre,RangoEdad,CantAlumnos,Año,Periodo")] Nivel nivel)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace SALD.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RangoEdad,CantAlumnos,Año,Periodo,Nombre")] Nivel nivel)
+        public ActionResult Edit([Bind(Include = "ID,Nombre,RangoEdad,CantAlumnos,Año,Periodo")] Nivel nivel)
         {
             if (ModelState.IsValid)
             {

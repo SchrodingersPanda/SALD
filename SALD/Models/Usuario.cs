@@ -18,10 +18,9 @@ namespace SALD.Models
         [StringLength(45, MinimumLength = 2)]
         [Required]
         public string Apellido { get; set; }
-
         
-        [RegularExpression(@"^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$", ErrorMessage = "Formato: 99.999.999-K")]
-        [StringLength(12, MinimumLength = 11)]
+        [RegularExpression(@"^\d{1,2}\d{3}\d{3}[-][0-9kK]{1}$", ErrorMessage = "Formato: 99999999-K")]
+        [StringLength(10, MinimumLength = 9)]
         [Display(Name ="RUT")]
         [Required]
         public string ID { get; set; }
@@ -32,10 +31,9 @@ namespace SALD.Models
         [Required]
         public string Username { get; set; }
 
-        [Display (Name ="Tipo de Usuario")]
-        [Range(1,5,ErrorMessage ="Tipo de usuario va de 1 a 5")]
+        [Display (Name ="Tipo de Usuario")]        
         [Required]
-        public int Usrtype { get; set; }
+        public EnumType Usrtype { get; set; }
 
         [StringLength(45, MinimumLength = 8)]
         [Required]
@@ -43,6 +41,15 @@ namespace SALD.Models
 
         public virtual ICollection<Planificacion> Planificaciones { get; set; }
         public virtual ICollection<Alumno> Alumnos { get; set; }
+    }
+
+    public enum EnumType
+    {
+        Sysadmin,
+        Dirección,
+        Docente,
+        Asistente,
+        Fonoaudiología
     }
     
 }

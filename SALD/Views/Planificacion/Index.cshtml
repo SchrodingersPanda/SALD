@@ -1,30 +1,30 @@
 ﻿@model IEnumerable<SALD.Models.Planificacion>
 
 @{
-    ViewBag.Title = "Lista de Planificaciones";
+    ViewBag.Title = "Index";
 }
 
-<h2>Lista de Planificaciones</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nueva", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
+            @Html.DisplayNameFor(model => model.Nivel.ID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Encargado)
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Inicio)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Termino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Encargado)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Objetivos_prop)
@@ -37,9 +37,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Actividades_cump)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nivel.ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SalaID)
@@ -59,13 +56,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ID)
+            @Html.DisplayFor(modelItem => item.Nivel.ID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Encargado)
+            @Html.DisplayFor(modelItem => item.Usuario.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Inicio)
@@ -73,7 +67,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Termino)
         </td>
-
+        <td>
+            @Html.DisplayFor(modelItem => item.Encargado)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Objetivos_prop)
         </td>
@@ -85,9 +81,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Actividades_cump)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nivel.ID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SalaID)
@@ -102,16 +95,11 @@
             @Html.DisplayFor(modelItem => item.ListaAp)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) <br />
-            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) <br />
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
 
 </table>
-<div>
-    <form>
-        <input type="button" value="Imprimir datos" onClick="window.print()">
-    </form>
-</div>
