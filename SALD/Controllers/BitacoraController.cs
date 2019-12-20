@@ -40,7 +40,7 @@ namespace SALD.Controllers
         // GET: Bitacora/Create
         public ActionResult Create()
         {
-            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado");
+            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "ID");
             //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID");
             return View();
         }
@@ -59,7 +59,7 @@ namespace SALD.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado", bitacora.PlanificacionID);
+            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "ID", bitacora.PlanificacionID);
             //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
             return View(bitacora);
         }
@@ -76,7 +76,7 @@ namespace SALD.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado", bitacora.PlanificacionID);
+            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "ID", bitacora.PlanificacionID);
             //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
             return View(bitacora);
         }
@@ -94,7 +94,7 @@ namespace SALD.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "Encargado", bitacora.PlanificacionID);
+            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "ID", bitacora.PlanificacionID);
             //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
             return View(bitacora);
         }
