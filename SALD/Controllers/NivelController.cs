@@ -49,14 +49,23 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nombre,RangoEdad,CantAlumnos,Año,Periodo")] Nivel nivel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Niveles.Add(nivel);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Niveles.Add(nivel);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(nivel);
+                return View(nivel);
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorNivelPK");
+            }
+            
         }
 
         // GET: Nivel/Edit/5
@@ -110,10 +119,19 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Nivel nivel = db.Niveles.Find(id);
-            db.Niveles.Remove(nivel);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Nivel nivel = db.Niveles.Find(id);
+                db.Niveles.Remove(nivel);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorNivel");
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

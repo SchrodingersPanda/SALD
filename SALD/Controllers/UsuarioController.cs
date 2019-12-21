@@ -49,14 +49,23 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Username,Usrtype,Password")] Usuario usuario)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Usuarios.Add(usuario);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(usuario);
+                return View(usuario);
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorUsuarioPK");
+            }
+            
         }
 
         // GET: Usuario/Edit/5
@@ -110,10 +119,19 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Usuario usuario = db.Usuarios.Find(id);
+                db.Usuarios.Remove(usuario);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorUsuario");
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

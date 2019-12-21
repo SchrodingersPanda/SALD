@@ -5,8 +5,8 @@ BEGIN
       DEFAULT_LANGUAGE=[us_english]
 END
 GO
-CREATE USER [ContosoUniversityUser] 
+CREATE USER [SALDprodUser] 
   FOR LOGIN [IIS APPPOOL\DefaultAppPool]
 GO
-EXEC sp_addrolemember 'db_owner', 'SALDUser'
+EXEC sp_addrolemember 'db_owner', 'SALDprodUser'
 GO

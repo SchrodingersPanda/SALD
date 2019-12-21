@@ -52,16 +52,25 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Novedades,PlanificacionID")] Bitacora bitacora)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Bitacoras.Add(bitacora);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Bitacoras.Add(bitacora);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "ID", bitacora.PlanificacionID);
-            //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
-            return View(bitacora);
+                ViewBag.PlanificacionID = new SelectList(db.Planificaciones, "ID", "ID", bitacora.PlanificacionID);
+                //ViewBag.SalaID = new SelectList(db.Salas, "ID", "NivelID", bitacora.SalaID);
+                return View(bitacora);
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorBitacoraPK");
+            }
+            
         }
 
         // GET: Bitacora/Edit/5
@@ -119,10 +128,19 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Bitacora bitacora = db.Bitacoras.Find(id);
-            db.Bitacoras.Remove(bitacora);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Bitacora bitacora = db.Bitacoras.Find(id);
+                db.Bitacoras.Remove(bitacora);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorBitacora");
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

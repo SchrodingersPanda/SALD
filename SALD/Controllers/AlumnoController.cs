@@ -51,15 +51,24 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,FechaNAc,HojaVida,AdultoID,NivelID")] Alumno alumno)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Alumnos.Add(alumno);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Alumnos.Add(alumno);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", alumno.NivelID);
-            return View(alumno);
+                ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", alumno.NivelID);
+                return View(alumno);
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorAlumnoPK");
+            }
+            
         }
 
         // GET: Alumno/Edit/5
@@ -115,10 +124,19 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Alumno alumno = db.Alumnos.Find(id);
-            db.Alumnos.Remove(alumno);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Alumno alumno = db.Alumnos.Find(id);
+                db.Alumnos.Remove(alumno);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorAlumno");
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

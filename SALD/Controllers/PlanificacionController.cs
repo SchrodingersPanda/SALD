@@ -53,16 +53,25 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Inicio,Termino,Encargado,Objetivos_prop,Objetivos_cump,Actividades_prop,Actividades_cump,NivelID,SalaID,NumeroR,Novedades,ListaAp")] Planificacion planificacion)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Planificaciones.Add(planificacion);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
+                    db.Planificaciones.Add(planificacion);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
-            //ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "ID", planificacion.UsuarioID);
-            return View(planificacion);
+                ViewBag.NivelID = new SelectList(db.Niveles, "ID", "ID", planificacion.NivelID);
+                //ViewBag.UsuarioID = new SelectList(db.Usuarios, "ID", "ID", planificacion.UsuarioID);
+                return View(planificacion);
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorPlanificacionPK");
+            }
+            
         }
 
         // GET: Planificacion/Edit/5
@@ -120,10 +129,19 @@ namespace SALD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Planificacion planificacion = db.Planificaciones.Find(id);
-            db.Planificaciones.Remove(planificacion);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                Planificacion planificacion = db.Planificaciones.Find(id);
+                db.Planificaciones.Remove(planificacion);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+                return View("ErrorPlanificacion");
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

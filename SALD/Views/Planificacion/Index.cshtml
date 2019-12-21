@@ -102,8 +102,8 @@
             @Html.DisplayFor(modelItem => item.ListaAp)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) <br />
+            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) <br />
             @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
         </td>
     </tr>
