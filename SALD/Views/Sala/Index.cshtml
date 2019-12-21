@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Nivel.Nombre)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Horario)
         </th>
         <th>
@@ -32,6 +35,9 @@
             @Html.DisplayFor(modelItem => item.ID)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Nivel.Nombre)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Horario)
         </td>
         <td>
@@ -41,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.Educ)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID })
         </td>
     </tr>
 }

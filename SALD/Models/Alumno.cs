@@ -35,7 +35,7 @@ namespace SALD.Models
         public string HojaVida { get; set; }
 
         [Required]
-        [Display(Name ="Apoderado/Adulto a cargo")]
+        [Display(Name ="Apoderado/\nAdulto a cargo")]
         public string AdultoID { get; set; }
         public string NivelID { get; set; }
 
